@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      background-color: #3b5998;
+    }
+    
+  </style>
+  <title>Results - Machine Learning Project with Facebook Prophet</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"></a>
+      <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*2fD9qRIlRAJay7D5NK3yEA.png" width="200px" height="auto" alt="Prophet logo"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/data">Data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/model">Model</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/results">Results</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="jumbotron mt-4" style="background-color: white;">
+      <h1 class="display-4">Results</h1>
+      <p class="lead">Here, you can find the results of our time series forecasting using the Facebook Prophet model. The visualizations below show the model's predictions and their accuracy, which can help inform decision-making and improve understanding of future trends.</p>
+      <hr class="my-4">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Store</th>
+            <th>Item</th>
+            <th>MAE</th>
+            <th>MSE</th>
+            <th>RMSE</th>
+            <th>MAPE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>3.939052</td>
+            <td>23.651479</td>
+            <td>4.863279</td>
+            <td>21.242278</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>7.510968</td>
+            <td>85.268904</td>
+            <td>9.234116</td>
+            <td>14.22435</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>3</td>
+            <td>5.098951</td>
+            <td>42.144103</td>
+            <td>6.491849</td>
+            <td>15.067425</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>4</td>
+            <td>4.251002</td>
+            <td>27.798035</td>
+            <td>5.272384</td>
+            <td>23.391245</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>5</td>
+            <td>3.670781</td>
+            <td>20.928123</td>
+            <td>4.574727</td>
+            <td>25.408403</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>4.571772</td>
+            <td>33.197902</td>
+            <td>5.761762</td>
+            <td>15.967201</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>2</td>
+            <td>8.398663</td>
+            <td>116.972296</td>
+            <td>10.815373</td>
+            <td>10.33648</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>3</td>
+            <td>6.180875</td>
+            <td>59.861014</td>
+            <td>7.73699</td>
+            <td>12.95329</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>4</td>
+            <td>4.512426</td>
+            <td>33.249521</td>
+            <td>5.76624</td>
+            <td>15.71189</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>5</td>
+            <td>4.530252</td>
+            <td>31.191473</td>
+            <td>5.584933</td>
+            <td>20.37265</td>
+          </tr>
+      <div id="forecast">
+      <!-- Optionally, you can also include a summary of the model's performance -->
+    </div>
+  </div>
+  <script src="/static/js/logic2.js"></script>
+</body>
+</html>

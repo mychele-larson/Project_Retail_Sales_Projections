@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    body {
+      background-color: #3b5998;
+    }
+    
+</style>
+  <title>Data - Machine Learning Project with Facebook Prophet</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"></a>
+      <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*2fD9qRIlRAJay7D5NK3yEA.png" width="200px" height="auto" alt="Prophet logo"></i>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/data">Data</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/model">Model</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/results">Results</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="jumbotron mt-4" style="background-color: white;">
+      <h1 class="display-4">Data</h1>
+      <p class="lead">The dataset contains 5 years of store-item daily sales data from 01-01-2013 through 12-30-2017, without any holiday effects or store closures. It includes ten stores and 50 items. Each row in the dataset represents the number of items sold at a particular store on a particular date. The dataset has four columns: Date, Store ID, Item ID, and Sales. The 'Date' column represents the date of the sale, with no missing values. The 'Store ID' column represents the unique identifier for each store. The 'Item ID' column represents the unique identifier for each item. The 'Sales' column represents the number of items sold on a particular date at a specific store. Note that the table displayed below only shows the first 20 rows of the dataset, as the entire dataset has 913,000 rows and is too large to fit on the webpage. This data was sourced from <a href="https://www.kaggle.com/c/demand-forecasting-kernels-only/data?select=train.csv" target="_blank">Kaggle</a>.</p>
+      <hr class="my-4">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr style="text-align: left;">
+            <th></th>
+            <th>date</th>
+            <th>store</th>
+            <th>item</th>
+            <th>sales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>0</th>
+            <td>2013-01-01</td>
+            <td>1</td>
+            <td>1</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <th>1</th>
+            <td>2013-01-02</td>
+            <td>1</td>
+            <td>1</td>
+            <td>11</td>
+          </tr>
+          <tr>
+            <th>2</th>
+            <td>2013-01-03</td>
+            <td>1</td>
+            <td>1</td>
+            <td>14</td>
+          </tr>
+          <tr>
+            <th>3</th>
+            <td>2013-01-04</td>
+            <td>1</td>
+            <td>1</td>
+            <td>13</td>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td>2013-01-05</td>
+            <td>1</td>
+            <td>1</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th>5</th>
+            <td>2013-01-06</td>
+            <td>1</td>
+            <td>1</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <th>6</th>
+            <td>2013-01-07</td>
+            <td>1</td>
+            <td>1</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th>7</th>
+            <td>2013-01-08</td>
+            <td>1</td>
+            <td>1</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <th>8</th>
+            <td>2013-01-09</td>
+            <td>1</td>
+            <td>1</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <th>9</th>
+            <td>2013-01-10</td>
+            <td>1</td>
+            <td>1</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <th>10</th>
+            <td>2013-01-11</td>
+            <td>1</td>
+            <td>1</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <th>11</th>
+            <td>2013-01-12</td>
+            <td>1</td>
+            <td>1</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <th>12</th>
+            <td>2013-01-13</td>
+            <td>1</td>
+            <td>1</td>
+            <td>10</td>
+          </tr>
+          <tr>
+            <th>13</th>
+            <td>2013-01-14</td>
+            <td>1</td>
+            <td>1</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <th>14</th>
+            <td>2013-01-15</td>
+            <td>1</td>
+            <td>1</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <th>15</th>
+            <td>2013-01-16</td>
+            <td>1</td>
+            <td>1</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <th>16</th>
+            <td>2013-01-17</td>
+            <td>1</td>
+            <td>1</td>
+            <td>16</td>
+          </tr>
+          <tr>
+            <th>17</th>
+            <td>2013-01-18</td>
+            <td>1</td>
+            <td>1</td>
+            <td>7</td>
+          </tr>
+          <tr>
+            <th>18</th>
+            <td>2013-01-19</td>
+            <td>1</td>
+            <td>1</td>
+            <td>18</td>
+          </tr>
+          <tr>
+            <th>19</th>
+            <td>2013-01-20</td>
+            <td>1</td>
+            <td>1</td>
+            <td>15</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="plot"></div>
+      <div id="line"></div>
+      <div id="graph"></div>
+      <div id="bar"></div>
+      <div id="chart"></div>
+
+    </div>
+  </div>
+  <script src="/static/js/logic.js"></script>
+</body>
+</html>
